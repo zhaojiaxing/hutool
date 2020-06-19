@@ -19,6 +19,17 @@ import cn.hutool.http.HttpUtil;
 public class HttpUtilTest {
 
 	@Test
+	public void postTest3() {
+		String result = HttpUtil.createPost("localhost:8040/inference/save/inference/analysis")
+				.charset(CharsetUtil.UTF_8)
+				.header("Authorization","Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ6aGFvangiLCJzY29wZSI6WyJ1c2VyX2luZm8iXSwiYXRpIjoiYjdmYmRkMWQtMzYyNC00OTVkLThhODAtN2NlYmM2ODBlZDExIiwiZXhwIjoxNTgwODgwNDU3LCJ1c2VySWQiOjUsImF1dGhvcml0aWVzIjpbIjEiXSwianRpIjoiYWQ5YjFkYmQtNThiMi00ZmU1LTkyMDUtZjFlMzVhZmI0Mzk3IiwiY2xpZW50X2lkIjoiTWVtYmVyU3lzdGVtIn0.Xxe2Su8obcJSWjHU0n4LtoSlv0qdTMZ0AP0qvWKHJ3U")
+				.header("Content-Type","application/json")
+				.body("{\"inferenceName\":\"测试3\",\"remark\":\"1234\",\"content\":\"{'content':{'accountList':[{'realName':'胡玲1000','accountNum':'513436200011213448','mapId':1319864643878944,'userType':0,'drugType':'1fxdx','id':1319864643878944,'index':0,'weight':0,'x':840.0159001560808,'y':122.99542763945321,'px':840.015985095839,'py':122.99540321357983,'fixed':true}],'relateList':[]},'remark':'11111','inferenceName':'测试1'}\"}")
+				.execute().body();
+		Console.log(result);
+	}
+
+	@Test
 	@Ignore
 	public void postTest() {
 		String result = HttpUtil.createPost("api.uhaozu.com/goods/description/1120448506").charset(CharsetUtil.UTF_8).execute().body();
